@@ -18,3 +18,4 @@ https://x2012cct.shinyapps.io/BCLiquorStorePriceApp/
 *Dean's origional code*
 https://github.com/STAT545-UBC-students/hw08-xcct2012/blob/master/bcl/app.R
 *BCL dataset*
+https://github.com/STAT545-UBC-students/hw08-xcct2012/blob/master/bcl/bcl-data.csv
