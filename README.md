@@ -1,7 +1,7 @@
  STAT545 Homework 8
 ## Zachary Sherker
 
-This is a repository for Zachary Sherker's STAT545 hw # 8 #.
+This is a repository for Zachary Sherker's STAT545 hw 8.
 
 ## In this assignment, I will:
 
