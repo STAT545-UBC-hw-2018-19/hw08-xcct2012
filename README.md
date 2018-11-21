@@ -12,10 +12,17 @@ Add three features to the BC liquor store shiny app, inlcuding:
 ## Links to the files in this repository can be found below:
 
 *Shiny app website*
+
 https://x2012cct.shinyapps.io/BCLiquorStorePriceApp/
+
 *R script file*
+
 https://github.com/STAT545-UBC-students/hw08-xcct2012/blob/master/STAT547hw08.R
+
 *Dean's origional code*
+
 https://github.com/STAT545-UBC-students/hw08-xcct2012/blob/master/bcl/app.R
+
 *BCL dataset*
+
 https://github.com/STAT545-UBC-students/hw08-xcct2012/blob/master/bcl/bcl-data.csv
