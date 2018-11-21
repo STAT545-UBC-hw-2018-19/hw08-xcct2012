@@ -1,0 +1,71 @@
+#
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+#
+
+library(shiny)
+library(tidyverse)
+
+bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
+
+ui <- fluidPage(
+  titlePanel("BC Liquor price app", 
+             windowTitle = "BCL app"),
+  sidebarLayout(
+    sidebarPanel(
+        h4(
+          "If you are sober enough to read this, then you need our app!"
+        ),
+        br(),
+      sliderInput("priceInput", "Select your desired price range.",
+                  min = 0, max = 100, value = c(15, 30), pre="$"),
+      radioButtons("typeInput", "Select your alcoholic beverage type.", 
+                   choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
+                   selected = "WINE"),
+      selectInput("typeInput", "Product type", multiple = TRUE,
+                  choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
+                  selected = c("WINE", "BEER")),
+      selectInput("countryInput", "Country",
+                  sort(unique(bcl$Country)),
+                  selected = "CANADA"),
+      checkboxInput("checkbox", "Sort by price or not",
+                    value = TRUE),
+      br()
+      ),
+    mainPanel(
+      plotOutput("price_hist"),
+      tableOutput("bcl_data")
+    )
+  )
+)
+
+server <- function(input, output) {
+  observe(print(input$priceInput))
+  bcl_filtered <- reactive({
+    bcl %>% 
+      filter(Price < input$priceInput[2],
+             Price > input$priceInput[1],
+             Type == input$typeInput)
+  })
+  output$price_hist <- renderPlot({
+    bcl_filtered() %>% 
+      ggplot(aes(Price)) +
+      geom_histogram()
+  })
+  output$coolplot <- renderPlot({
+    if (is.null(filtered())) {
+      return()
+    }
+    ggplot(filtered(), aes(x = Alcohol_Content, fill = Type)) +
+      geom_histogram(alpha = 0.7) 
+  })
+  output$bcl_data <- renderTable({
+    bcl_filtered()
+  })
+}
+
+shinyApp(ui = ui, server = server)
