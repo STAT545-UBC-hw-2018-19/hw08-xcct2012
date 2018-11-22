@@ -16,7 +16,7 @@ This app allows you to search products sold at BC liquor stores and provides dat
 
 *Shiny app website*
 
-https://x2012cct.shinyapps.io/BCLiquorStorePriceApp/
+https://x2012cct.shinyapps.io/STAT545_hw08/
 
 *R script file*
 
